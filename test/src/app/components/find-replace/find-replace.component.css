@@ -1,0 +1,22 @@
+.find-replace-container {
+  width: 80%;
+  margin-left: 40px;
+  text-align: center;
+}
+/* 
+label {
+margin-top: 20px  auto;
+} */
+
+button {
+  cursor: pointer;
+}
+
+.result {
+  margin-top: 20px;
+}
+
+.final-result {
+  background-color: green;
+  color: aliceblue;
+}

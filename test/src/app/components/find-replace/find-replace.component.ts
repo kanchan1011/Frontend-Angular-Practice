@@ -21,7 +21,7 @@ export class FindReplaceComponent {
 
   findAndReplace() {
     if (this.findText && this.replaceText) {
-      const regex = new RegExp(this.findText, 'g');
+      const regex = new RegExp(this.findText, 'gi'); //For case sensitive use "g" instead of "gi"
       this.resultText = this.inputText.replace(regex, this.replaceText);
     } else {
       alert('Please provide both find and replace Text.');

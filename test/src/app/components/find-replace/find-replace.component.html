@@ -34,7 +34,9 @@
             placeholder="Enter Text to Replace"
           />
         </div>
-
+        <div *ngIf="errorMessage" class="form-control alert alert-danger mt-4" role="alert">
+            {{ errorMessage }}
+          </div>
         <button
           type="button"
           class="btn btn-outline-success mt-4"

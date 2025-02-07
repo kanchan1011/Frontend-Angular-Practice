@@ -1,0 +1,52 @@
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-6">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Ways to Communicate between Components</h5>
+          <div class="card-text">
+            There are several way to communicate between components:
+            <div class="list">
+              <ul>
+                <li>
+                  <b>Input:</b> The parent component can pass data to a child
+                  component via the &#64;Input() decorator.
+                </li>
+                <li>
+                  <b>Output:</b> The child component can send data to the parent
+                  component using the &#64;Output() decorator and an
+                  EventEmitter.
+                </li>
+              </ul>
+            </div>
+          </div>
+          <a routerLink="/parent" class="btn btn-primary">Go to Input/Output</a>
+          <app-parent></app-parent>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-6">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Sibling Component Comminication</h5>
+          <div class="card-text">
+            There are below way to communicate between sibling components:
+            <div class="list">
+              <ul>
+                <li>
+                  <b>Service:</b> Components can communicate indirectly via a shared service. The service can store the data and use RxJS observables to allow components to subscribe and update the data.
+                </li>
+                <li>
+                  <b>ViewChild:</b> Allows a parent component to access the child component or DOM element in the template.
+                </li>
+
+              </ul>
+            </div>
+          </div>
+          <a href="#" class="btn btn-primary">Go to Topics</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

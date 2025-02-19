@@ -1,0 +1,16 @@
+{
+  "users": [
+    {
+      "username": "John Doe",
+      "gender": "Male"
+    },
+    {
+      "username": "Jane Smith",
+      "gender": "Male"
+    },
+    {
+      "username": "Sam Johnson",
+      "gender": "Female"
+    }
+  ]
+}

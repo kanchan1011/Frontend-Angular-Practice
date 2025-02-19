@@ -1,13 +1,14 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { IUser } from '../../models/user.model';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'app-user',
   standalone: true,
-  imports: [RouterModule, CommonModule,FormsModule],
+  imports: [RouterModule, CommonModule, FormsModule],
   templateUrl: './user.component.html',
   styleUrl: './user.component.css',
 })
@@ -37,32 +38,54 @@ import { FormsModule } from '@angular/forms';
 //   email: string;
 //   mobile: string;
 // }
-export class UserComponent {
-[x: string]: any;
-  userList: any = [
-    {
-      username: 'Kanchan',
-      gender: 'Female',
-    },
-    {
-      username: 'Arya',
-      gender: 'Female',
-    },
-    {
-      username: 'Yash',
-      gender: 'Male',
-    },
-    {
-      username: 'Reva',
-      gender: 'Female',
-    },
-  ];
+export class UserComponent implements OnInit {
+  userList: IUser[] = [];
+  isLoading = true;
+  errorMessage = '';
+
+  constructor(private userService: UserService) {}
+
+  ngOnInit(): void {
+    this.getUser();
+  }
+
+  // userList: any = [
+  //   {
+  //     username: 'Kanchan',
+  //     gender: 'Female',
+  //   },
+  //   {
+  //     username: 'Arya',
+  //     gender: 'Female',
+  //   },
+  //   {
+  //     username: 'Yash',
+  //     gender: 'Male',
+  //   },
+  //   {
+  //     username: 'Reva',
+  //     gender: 'Female',
+  //   },
+  // ];
   newUser: any = { username: '', gender: '' };
 
-  addUser(){
-    if(this.newUser.username && this.newUser.gender){
-      this.userList.push({...this.newUser});
+  addUser() {
+    if (this.newUser.username && this.newUser.gender) {
+      this.userList.push({ ...this.newUser });
       this.newUser = { username: '', gender: '' };
     }
+  }
+
+  getUser() {
+    this.userService.getUser().subscribe(
+      (res: IUser[]) => {
+        this.userList = res;
+        this.isLoading = false;
+      },
+      (error) => {
+        this.errorMessage = 'Error fetching data..';
+        this.isLoading = false;
+      }
+    );
   }
 }

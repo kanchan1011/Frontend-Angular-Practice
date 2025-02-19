@@ -1,0 +1,85 @@
+<div class="container">
+  <div class="text-center mt-4">
+    <h3>User List</h3>
+    <!-- List
+    <div>
+      @for( user of userList; track $index){
+
+      {{ user.username }}
+      }
+    </div> -->
+  </div>
+  <div class="row mt-4">
+    <div class="col-9">
+      <div class="table-responsive-md">
+        <table class="table table-hover table-bordered">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Username</th>
+              <th scope="col">Gender</th>
+              <th scope="col">Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let user of userList; index as i">
+              <th scope="row">{{ i + 1 }}</th>
+              <td>{{ user.username }}</td>
+              <td>{{ user.gender }}</td>
+              <td>
+                <button class="btn btn-outline-primary btn-md text-center">
+                  Edit User
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="col-3"></div>
+  </div>
+
+  <!--ADD USER-->
+  <div class="row">
+    <div class="col-9">
+      <div class="addUser card">
+        <h4>Add New User</h4>
+        <form (ngSubmit)="addUser()">
+          <div class="form-group">
+            <label for="username">Username:</label>
+            <input
+              class="form-control input-sm"
+              id="username"
+              [(ngModel)]="newUser.username"
+              name="username"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="gender">Gender:</label>
+            <input
+              class="form-control"
+              id="gender"
+              [(ngModel)]="newUser.gender"
+              name="gender"
+              required
+            />
+          </div>
+          <button
+            type="submit"
+            class="btn btn-outline-primary btn-md text-center mt-2"
+            [disabled]="!newUser.username || !newUser.gender"
+          >
+            Add User
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <div class="mt-2">
+    <button class="btn btn-outline-warning btn-md" routerLink="/home">
+      Back
+    </button>
+  </div>
+</div>

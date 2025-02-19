@@ -26,6 +26,12 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
 
+# Json Server for mock Backend
+# To Run Json server use command
+json-server --watch user.data.json
+# API URL
+http://localhost:3000/users
+http://localhost:3000/userData
 
 # Task 1, 2,3 completed 4 is completed partially.
 

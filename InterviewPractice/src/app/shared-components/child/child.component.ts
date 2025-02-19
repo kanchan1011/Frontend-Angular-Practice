@@ -1,4 +1,11 @@
-import { Component, Input } from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  ElementRef,
+  Input,
+  ViewChild,
+  viewChild,
+} from '@angular/core';
 
 @Component({
   selector: 'app-child',
@@ -7,6 +14,15 @@ import { Component, Input } from '@angular/core';
   templateUrl: './child.component.html',
   styleUrl: './child.component.css',
 })
-export class ChildComponent {
+export class ChildComponent implements AfterViewInit {
   @Input() childData: string | undefined;
+
+  @ViewChild('myDiv', { static: false }) myDiv!: ElementRef;
+
+  ngAfterViewInit(): void {
+    console.log(this.myDiv.nativeElement.textContent);
+  }
+  onChangeText() {
+    this.myDiv.nativeElement.textContent = 'Text Changed';
+  }
 }

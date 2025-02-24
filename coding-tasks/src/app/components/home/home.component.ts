@@ -2,11 +2,12 @@ import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
 import { NavbarComponent } from "../navbar/navbar.component";
+import { HighlightOnHoverDirective } from '../../directives/highlight-on-hover.directive';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [FormsModule, CommonModule, NavbarComponent],
+  imports: [FormsModule, CommonModule,HighlightOnHoverDirective],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css',
 })

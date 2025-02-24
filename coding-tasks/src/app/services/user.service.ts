@@ -8,10 +8,12 @@ import { IUser } from '../models/user.model';
 })
 export class UserService {
   private apiUrl = 'http://localhost:3000';
+  //private apiUrl = 'api-data/user-data.json';
+
   constructor(private http: HttpClient) {}
 
   getUser(): Observable<IUser[]> {
-    console.log(this.apiUrl)
-    return this.http.get<IUser[]>(this.apiUrl+'/users');
+    console.log(this.apiUrl);
+    return this.http.get<IUser[]>(this.apiUrl + '/users');
   }
 }

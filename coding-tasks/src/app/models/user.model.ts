@@ -1,6 +1,7 @@
 export interface IUser {
   username: string;
   email: string;
+  dob:Date;
   mobile: string;
   gender: string;
   address: string;

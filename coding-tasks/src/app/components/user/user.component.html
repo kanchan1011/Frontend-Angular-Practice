@@ -10,7 +10,6 @@
     </div> -->
     <div *ngIf="isLoading">Loading data...</div>
     <div *ngIf="errorMessage" class="error">{{ errorMessage }}</div>
-
   </div>
   <div class="row mt-4" *ngIf="!isLoading && !errorMessage">
     <div class="col-9">
@@ -21,6 +20,7 @@
               <th scope="col">#</th>
               <th scope="col">Username</th>
               <th scope="col">Gender</th>
+              <th scope="col">DOB</th>
               <th scope="col">Action</th>
             </tr>
           </thead>
@@ -29,6 +29,8 @@
               <th scope="row">{{ i + 1 }}</th>
               <td>{{ user.username }}</td>
               <td>{{ user.gender }}</td>
+              <td>{{ user.dob|date }}</td> <!--date is inbuilt pipe-->
+              <td>{{user.dob|dateFormat}}</td> <!--Custom pipe-->
               <td>
                 <button class="btn btn-outline-primary btn-md text-center">
                   Edit User

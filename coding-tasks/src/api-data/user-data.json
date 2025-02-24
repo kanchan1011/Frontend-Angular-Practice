@@ -3,20 +3,17 @@
     {
       "username": "John Doe",
       "gender": "Male",
-      "id": "31eb",
-      "dob":"2025-02-24"
+      "id": "31eb"
     },
     {
       "username": "Jane Smith",
       "gender": "Male",
-      "id": "abc4",
-      "dob":"2025-02-24"
+      "id": "abc4"
     },
     {
       "username": "Sam Johnson",
       "gender": "Female",
-      "id": "9088",
-      "dob":"2025-02-24"
+      "id": "9088"
     }
   ],
   "userData": [

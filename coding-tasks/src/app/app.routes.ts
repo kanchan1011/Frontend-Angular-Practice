@@ -4,6 +4,9 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
 import { UserComponent } from './components/user/user.component';
 import { AboutComponent } from './components/about/about.component';
 import { ContactComponent } from './components/contact/contact.component';
+import { RegisterComponent } from './components/register/register.component';
+import { LoginComponent } from './components/login/login.component';
+import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -11,5 +14,12 @@ export const routes: Routes = [
   { path: 'user', component: UserComponent, title: 'User List' },
   { path: 'about', component: AboutComponent, title: 'About Us Page' },
   { path: 'contact', component: ContactComponent, title: 'Contact Us Page' },
+  { path: 'login', component: LoginComponent, title: 'Login Page' },
+  { path: 'signup', component: RegisterComponent, title: 'Register Page' },
+  {
+    path: 'forgot-password',
+    component: ForgotPasswordComponent,
+    title: 'Forgot Password Page',
+  },
   { path: '**', component: PageNotFoundComponent, title: 'Page Not Found' },
 ];

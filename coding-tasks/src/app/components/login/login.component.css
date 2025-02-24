@@ -1,0 +1,15 @@
+.label-text {
+  margin-right: 10px;
+}
+
+.login-form{
+    /* height: 70%; */
+    width: 40%;
+    margin-left: 20px;
+}
+.sign-up-link{
+    margin-left: 10px;
+}
+.forgot-password-link{
+    margin-left: 40px;
+}

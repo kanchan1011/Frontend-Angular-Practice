@@ -21,5 +21,16 @@ export const routes: Routes = [
     component: ForgotPasswordComponent,
     title: 'Forgot Password Page',
   },
+  {
+    path: 'shared',
+    loadChildren: () =>
+      import('./modules/shared/shared.module').then((m) => m.SharedModule),
+  },
+  {
+    path: 'feature',
+    loadChildren: () =>
+      import('./modules/feature/feature.module').then((m) => m.FeatureModule),
+  },
   { path: '**', component: PageNotFoundComponent, title: 'Page Not Found' },
+ 
 ];

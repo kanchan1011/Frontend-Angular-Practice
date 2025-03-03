@@ -29,7 +29,15 @@ export class EmployeeService {
     return this.http.post<Employee>(this.apiURL + 'CreateEmployee', obj);
   }
 
-  deleteEmployee(id: number): Observable<Employee[]> {
-    return this.http.delete<Employee[]>(this.apiURL + 'DeleteEmployee/' + id);
+  deleteEmployee(id: number): Observable<Employee> {
+    return this.http.delete<Employee>(this.apiURL + 'DeleteEmployee/' + id);
+  }
+
+  getAllChildDepartment(): Observable<IAPIResponse> {
+    return this.http.get<IAPIResponse>(this.apiURL + 'GetAllChildDepartment');
+  }
+
+  updateEmployee(emp:Employee): Observable<Employee> {
+    return this.http.put<Employee>(this.apiURL + 'UpdateEmployee/' + emp.employeeId,emp);
   }
 }

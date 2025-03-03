@@ -5,6 +5,7 @@ import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { EmployeeComponent } from './pages/employee/employee.component';
 import { NewLeaveComponent } from './pages/new-leave/new-leave.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { EarnedLeaveComponent } from './pages/earned-leave/earned-leave.component';
 
 export const routes: Routes = [
   {
@@ -15,6 +16,7 @@ export const routes: Routes = [
   {
     path: 'login',
     component: LoginComponent,
+    title: 'Login Page',
   },
   {
     path: '',
@@ -31,6 +33,10 @@ export const routes: Routes = [
       {
         path: 'leave-request',
         component: NewLeaveComponent,
+      },
+      {
+        path: 'earned-leave',
+        component: EarnedLeaveComponent,
       },
     ],
   },

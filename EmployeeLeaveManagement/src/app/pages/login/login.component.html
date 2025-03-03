@@ -16,7 +16,7 @@
                         </div>
                         <div class="form-group">
                             <b> <label for="password">Password:</label></b><br>
-                            <input type="text" name="password" [(ngModel)]="loginObj.password" id="password" class="form-control"
+                            <input type="password" name="password" [(ngModel)]="loginObj.password" id="password" class="form-control"
                                 placeholder="Enter your password" required #password="ngModel">
                                 <div class="text text-danger">
                                     <span *ngIf="password.invalid && password.touched">Password is required!</span>

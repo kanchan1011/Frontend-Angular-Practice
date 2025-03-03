@@ -35,8 +35,20 @@
                 <td>{{ item.role }}</td>
                 <td>{{ item.gender }}</td>
                 <td>
-                    <button type="button" class="btn btn-warning">Edit</button>
-                    <button type="button" class="btn btn-danger" (click)="onDelete(item.employeeId)">Delete</button>
+                  <button
+                    type="button"
+                    class="btn btn-warning btn-sm"
+                    (click)="onEdit(item)"
+                  >
+                    Edit
+                  </button>
+                  <button
+                    type="button"
+                    class="btn btn-danger btn-sm mt-1"
+                    (click)="onDelete(item.employeeId)"
+                  >
+                    Delete
+                  </button>
                 </td>
               </tr>
               }
@@ -164,13 +176,23 @@
                 </select>
               </div>
             </div>
+            @if (employeeObj.employeeId==0) {
             <button
               type="button"
               (click)="onSavemployee()"
               class="btn btn-warning mt-3"
             >
-              Submit
+              Save Employee
             </button>
+            }@else {
+            <button
+              type="button"
+              (click)="onUpdateEmployee()"
+              class="btn btn-success mt-3"
+            >
+              Update Employee
+            </button>
+            }
           </form>
         </div>
       </div>

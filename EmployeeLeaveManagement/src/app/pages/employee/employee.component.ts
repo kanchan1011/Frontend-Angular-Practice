@@ -35,6 +35,14 @@ export class EmployeeComponent implements OnInit {
       this.parentDepartmentList = res.data;
     });
   }
+  getAllChild() {
+    this.employeeService
+      .getAllChildDepartment()
+      .subscribe((res: IAPIResponse) => {
+        console.log(res);
+        this.childDepartmentList = res.data;
+      });
+  }
 
   loadEmployee() {
     this.employeeService.getAllEmployees().subscribe((res: Employee[]) => {
@@ -59,6 +67,7 @@ export class EmployeeComponent implements OnInit {
       .subscribe((res: Employee) => {
         alert('Employee Created Successfully...');
         this.employeeObj = new Employee();
+        this.loadEmployee();
       });
   }
 
@@ -66,10 +75,25 @@ export class EmployeeComponent implements OnInit {
   onDelete(id: number) {
     const isDelete = confirm('Are you sure want to Delete?');
     if (isDelete) {
-      this.employeeService.deleteEmployee(id).subscribe((res: Employee[]) => {
+      this.employeeService.deleteEmployee(id).subscribe((res: Employee) => {
         this.loadEmployee();
       });
     }
   }
 
+  //On Edit
+  onEdit(item: Employee) {
+    this.employeeObj = item;
+    this.getAllChild();
+  }
+
+  onUpdateEmployee() {
+    this.employeeService
+      .updateEmployee(this.employeeObj)
+      .subscribe((res: Employee) => {
+        alert('Employee Updated Successfully...');
+        this.employeeObj = new Employee();
+        this.loadEmployee();
+      });
+  }
 }

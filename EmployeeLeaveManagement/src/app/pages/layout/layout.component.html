@@ -1,0 +1,34 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" routerLink="/dashboard">EmpLeaveMgmt</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" routerLink="/dashboard">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" routerLink="/employee">Employee</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" routerLink="/leave-request">Leave-Request</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" routerLink="/contact">Contact</a>
+            </li>
+
+
+        </ul>
+        <ul class="navbar-nav ms-auto">
+            <li class="nav-item d-flex align-items-center">
+                <span class="navbar-text me-2 ">Welcome, {{loggedUserData.emailId}}</span>
+                <button type="button" class="btn btn-warning btn-sm" (click)="onLogOff()">Logout</button>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<router-outlet></router-outlet>

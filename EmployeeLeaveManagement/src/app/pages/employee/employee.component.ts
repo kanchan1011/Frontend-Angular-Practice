@@ -1,19 +1,75 @@
-import { Component } from '@angular/core';
-import { Employee } from '../../model/employee';
+import { Component, inject, OnInit } from '@angular/core';
+import {
+  Employee,
+  IAPIResponse,
+  IChildDept,
+  IParentDept,
+} from '../../model/employee';
 import { FormsModule } from '@angular/forms';
+import { EmployeeService } from '../../services/employee.service';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-employee',
   standalone: true,
-  imports: [FormsModule],
+  imports: [FormsModule, CommonModule],
   templateUrl: './employee.component.html',
   styleUrl: './employee.component.scss',
 })
-export class EmployeeComponent {
+export class EmployeeComponent implements OnInit {
   employeeObj: Employee = new Employee();
   parentDeptId: string = '';
+  employeeService = inject(EmployeeService);
+  parentDepartmentList: IParentDept[] = [];
+  childDepartmentList: IChildDept[] = [];
+  employeeList: Employee[] = [];
 
-  //Need to start from getParentDepartment API
-  //https://www.youtube.com/watch?v=CKdzOR_mLG8   => YOUtube URL
-  //  API URL= https://projectapi.gerasim.in/index.html
+  ngOnInit(): void {
+    this.loadParentDepartment();
+    this.loadEmployee();
+  }
+
+  loadParentDepartment() {
+    this.employeeService.getDepartment().subscribe((res: IAPIResponse) => {
+      console.log(res);
+      this.parentDepartmentList = res.data;
+    });
+  }
+
+  loadEmployee() {
+    this.employeeService.getAllEmployees().subscribe((res: Employee[]) => {
+      console.log(res);
+      this.employeeList = res;
+    });
+  }
+
+  onDeptChange() {
+    this.employeeService
+      .getChildDepartmentByParentId(this.parentDeptId)
+      .subscribe((res: IAPIResponse) => {
+        this.childDepartmentList = res.data;
+        console.log(this.childDepartmentList);
+      });
+  }
+
+  //Create New Employee
+  onSavemployee() {
+    this.employeeService
+      .createNewEmployee(this.employeeObj)
+      .subscribe((res: Employee) => {
+        alert('Employee Created Successfully...');
+        this.employeeObj = new Employee();
+      });
+  }
+
+  //Coding Done but giving error while deleting
+  onDelete(id: number) {
+    const isDelete = confirm('Are you sure want to Delete?');
+    if (isDelete) {
+      this.employeeService.deleteEmployee(id).subscribe((res: Employee[]) => {
+        this.loadEmployee();
+      });
+    }
+  }
+
 }

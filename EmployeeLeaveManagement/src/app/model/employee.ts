@@ -19,3 +19,21 @@ export class Employee {
     this.role = '';
   }
 }
+
+export interface IParentDept {
+  departmentId: number;
+  departmentName: string;
+  departmentLogo: string;
+}
+
+export interface IChildDept {
+  childDeptId: number;
+  parentDeptId: number;
+  departmentName: string;
+}
+
+export interface IAPIResponse {
+  message: string;
+  result: boolean;
+  data: any;
+}

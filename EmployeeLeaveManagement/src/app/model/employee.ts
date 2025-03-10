@@ -37,3 +37,30 @@ export interface IAPIResponse {
   result: boolean;
   data: any;
 }
+
+export interface ILeaveType {
+  leaveTypeId: number;
+  typeName: string;
+}
+
+export interface IEarnedLeave {
+  earnedLeaveId: number;
+  employeeId: number;
+  totalEarnedLeaves: number;
+  totalSickEarnedLeaves: number;
+  lastUpdatedDate: string;
+  employeeName: string;
+}
+
+export interface ILeaveRequest {
+  leaveId: number;
+  employeeId: number;
+  leaveTypeId: number;
+  startDate: string;
+  endDate: string;
+  reason: string;
+  status: string;
+  requestDate: string;
+  employeeName: string;
+  typeName: string;
+}

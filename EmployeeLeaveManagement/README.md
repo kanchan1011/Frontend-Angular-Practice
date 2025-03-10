@@ -27,6 +27,6 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
 
 
-## Basic CRUD is completed upto earned leave component done
-// Youtube URL => https://www.youtube.com/watch?v=CKdzOR_mLG8
+## Earned leave component functionality done like adding earned leave, getting earned leave data etc. now making leave request need to start as employee
+// Youtube URL => https://www.youtube.com/watch?v=CKdzOR_mLG8&t=1257s
 // API URL Used  => https://projectapi.gerasim.in/index.html

@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Employee, IAPIResponse } from '../model/employee';
+import { Employee, IAPIResponse, IEarnedLeave } from '../model/employee';
 
 @Injectable({
   providedIn: 'root',
@@ -9,7 +9,14 @@ import { Employee, IAPIResponse } from '../model/employee';
 export class EmployeeService {
   apiURL: string = 'https://projectapi.gerasim.in/api/EmployeeManagement/';
 
-  constructor(private http: HttpClient) {}
+  loggedUserData: any;
+
+  constructor(private http: HttpClient) {
+    const localData = localStorage.getItem('leaveUser');
+    if (localData) {
+      this.loggedUserData = JSON.parse(localData);
+    }
+  }
 
   getAllEmployees(): Observable<Employee[]> {
     return this.http.get<Employee[]>(this.apiURL + 'GetAllEmployees');
@@ -37,7 +44,18 @@ export class EmployeeService {
     return this.http.get<IAPIResponse>(this.apiURL + 'GetAllChildDepartment');
   }
 
-  updateEmployee(emp:Employee): Observable<Employee> {
-    return this.http.put<Employee>(this.apiURL + 'UpdateEmployee/' + emp.employeeId,emp);
+  updateEmployee(emp: Employee): Observable<Employee> {
+    return this.http.put<Employee>(
+      this.apiURL + 'UpdateEmployee/' + emp.employeeId,
+      emp
+    );
+  }
+
+  addEarnedLeave(emp: IEarnedLeave): Observable<IAPIResponse> {
+    return this.http.post<IAPIResponse>(this.apiURL + 'AddNewEarnedLeave', emp);
+  }
+
+  getAllEarnedLeaves(): Observable<IAPIResponse> {
+    return this.http.get<IAPIResponse>(this.apiURL + 'GetAllEarnedLeaves');
   }
 }

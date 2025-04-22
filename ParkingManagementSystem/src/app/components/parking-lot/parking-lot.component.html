@@ -1,0 +1,21 @@
+<div class="parking-lot">
+  <h3>Parking Lot</h3>
+  <div class="parking-spaces">
+    <div class="parking-space" *ngFor="let spot of parkingSpaces; let i = index">
+      <p>Spot {{i+1}} :<strong> {{spot? 'Occupied':'Empty'}}</strong></p>
+      <button mat-stroked-button class="m-4" *ngIf="!spot" (click)="parkCar()">
+        Park Car
+      </button>
+      <button mat-raised-button (click)="removeCar(i)" *ngIf="spot">Remove Car</button>
+    </div>
+  </div>
+
+  <div class="parking-status">
+    <h3>Parking Status</h3>
+    <ul>
+      <li *ngFor="let status of parkingStatus">{{status}}</li>
+      
+    </ul>
+  </div>
+
+</div>

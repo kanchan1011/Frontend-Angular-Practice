@@ -10,6 +10,6 @@ import { FormsModule } from '@angular/forms';
 export class LoginComponent {
 
   onLogin(){
-    console.log("data");
+    console.log("data"); 
   }
 }

@@ -1,1 +1,29 @@
-<p>user-list works!</p>
+<div class="row">
+    <div class="col-md-6">
+        <!-- {{userList|json}} -->
+        <table border="1">
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+            </tr>
+            <tr *ngFor="let item of userList">
+                <td>{{item.id}}</td>
+                <td>{{item.name}}</td>
+            </tr>
+        </table>
+    </div>
+    <div class="col-md6"></div>
+</div>
+
+<div class="row" class="searchBox">
+    <div class="col-md-10">
+        <input type="text" placeholder="Search Users..." [formControl]="searchControl">
+    </div>
+    <div class="col-md-2">
+        <ul>
+            <li *ngFor="let user of user$|async">
+            {{user.name}}
+        </li>
+    </ul>
+    </div>
+</div>

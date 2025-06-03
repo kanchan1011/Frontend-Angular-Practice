@@ -1,7 +1,12 @@
 <div class="row">
     <div class="col-md-12">
         <h2>Zone.js Example</h2>
-        <span><button (click)="loadData()">Load Data</button></span>
+        <span><button class="btn btn-secondary" (click)="loadData()">Load Data</button></span>
         <p *ngIf="message">{{message}}</p>
+    </div>
+</div>
+<div class="row dynamic-form">
+    <div class="col-md-12">
+        <app-dynamic-form></app-dynamic-form>
     </div>
 </div>

@@ -1,0 +1,46 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+      <h2>Dyanamic Form</h2>
+
+      <form [formGroup]="form" (ngSubmit)="onSubmit()">
+        <div *ngFor="let field of fields">
+          <label class="form-label">{{ field.label }}</label>
+
+          <input
+            *ngIf="field.type === 'text' || field.type === 'email'"
+            [type]="field.type"
+            [formControlName]="field.name"
+            class="form-control"
+          />
+
+          <select
+            *ngIf="field.type === 'select'"
+            [formControlName]="field.name"
+            class="form-select"
+          >
+            <option *ngFor="let opt of field.options" [value]="opt">
+              {{ opt }}
+            </option>
+          </select>
+
+          <div
+            *ngIf="
+              form.get(field.name)?.invalid && form.get(field.name)?.touched
+            "
+          >
+            Field is invalid
+          </div>
+        </div>
+
+        <button
+          class="btn btn-primary mt-4"
+          type="submit"
+          [disabled]="form.invalid"
+        >
+          Submit
+        </button>
+      </form>
+    </div>
+  </div>
+</div>

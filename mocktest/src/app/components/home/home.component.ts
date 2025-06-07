@@ -1,10 +1,11 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { DynamicFormComponent } from "../dynamic-form/dynamic-form.component";
+import { CountdownTimerComponent } from "../countdown-timer/countdown-timer.component";
 
 @Component({
   selector: 'app-home',
-  imports: [CommonModule, DynamicFormComponent],
+  imports: [CommonModule, DynamicFormComponent, CountdownTimerComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css',
 })

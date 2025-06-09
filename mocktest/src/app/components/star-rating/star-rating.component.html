@@ -1,0 +1,11 @@
+<span>
+  <ng-container *ngFor="let filled of stars; let i = index">
+    <span
+      (click)="selectRating(i)"
+      [style.cursor]="'pointer'"
+      [style.color]="filled ? 'gold' : 'gray'"
+    >
+      &#9733;
+    </span>
+  </ng-container>
+</span>

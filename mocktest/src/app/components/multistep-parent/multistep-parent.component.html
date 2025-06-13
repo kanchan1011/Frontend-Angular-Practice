@@ -1,0 +1,15 @@
+<div *ngIf="step === 1">
+      <app-personal-details (stepSubmit)="nextStep(1, $event)"></app-personal-details>
+    </div>
+
+    <div *ngIf="step === 2">
+      <app-education (stepSubmit)="nextStep(2, $event)" (back)="prevStep()"></app-education>
+    </div>
+
+    <div *ngIf="step === 3">
+      <app-review
+        [data]="formData"
+        (back)="prevStep()"
+        (finalSubmit)="submitAll()">
+      </app-review>
+    </div>

@@ -1,0 +1,82 @@
+<div class="container">
+  <div class="row mt-4">
+    <div class="col-md-6">
+      <h4>Educational Details</h4>
+      <form [formGroup]="form" (ngSubmit)="submit()">
+        <label>Highest Qualification</label>
+        <select
+          name="qualification"
+          class="form-control"
+          formControlName="qualification"
+        >
+          <option value="be">BE/BTech</option>
+          <option value="bcom">BCom/Bsc</option>
+          <option value="me">ME/MTech</option>
+          <option value="mcom">Msc/MCom</option>
+        </select>
+        <div
+          class="text text-danger"
+          *ngIf="
+            form.controls['qualification'].touched &&
+            form.controls['qualification'].invalid
+          "
+        >
+          Qualification is required
+        </div>
+
+        <label>Experience</label>
+        <input
+          type="text"
+          placeholder="Enter Experience"
+          class="form-control"
+          formControlName="experience"
+        />
+        <div
+          class="text text-danger"
+          *ngIf="
+            form.controls['experience'].touched &&
+            form.controls['experience'].invalid
+          "
+        >
+          Experience is required
+        </div>
+
+      
+
+        <!-- <label>Skills</label>
+           Angular <input type="checkbox" checked formControlName="skills">
+           Angular <input type="checkbox">
+           Angular <input type="checkbox">
+           Angular <input type="checkbox">
+           Angular <input type="checkbox">
+           Angular <input type="checkbox">
+            -->
+           <div formArrayName="skills">
+  <div *ngFor="let skill of skillList; let i = index">
+    <label>
+          <input type="checkbox" 
+            [value]="skill" formControlName="i"
+            (change)="onCheckboxChange($event)"
+          />
+          {{ skill }}
+          </label>
+  </div>
+  </div>
+        <button
+          class="btn btn-secondary mt-4 backBtn"
+          type="button"
+          (click)="goBack()"
+        >
+          Back
+        </button>
+        <button
+          class="btn btn-primary mt-4 submitBtn"
+          type="submit"
+          [disabled]="form.invalid"
+        >
+          Next
+        </button>
+      </form>
+    </div>
+  </div>
+</div>

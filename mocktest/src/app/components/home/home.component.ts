@@ -3,6 +3,8 @@ import { Component } from '@angular/core';
 import { DynamicFormComponent } from '../dynamic-form/dynamic-form.component';
 import { CountdownTimerComponent } from '../countdown-timer/countdown-timer.component';
 import { StarRatingComponent } from '../star-rating/star-rating.component';
+import { RouterModule } from '@angular/router';
+import { EducationComponent } from "../education/education.component";
 
 @Component({
   selector: 'app-home',
@@ -11,7 +13,9 @@ import { StarRatingComponent } from '../star-rating/star-rating.component';
     DynamicFormComponent,
     CountdownTimerComponent,
     StarRatingComponent,
-  ],
+    RouterModule,
+    EducationComponent
+],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css',
 })

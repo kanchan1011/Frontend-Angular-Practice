@@ -1,0 +1,13 @@
+ <h4>Review your data:</h4>
+    <p><strong>Full Name:</strong> {{ data.firstName }} {{data.middleName}} {{data.lastName}</p>
+    <p><strong>Email:</strong> {{ data.email }}</p>
+    <p><strong>Mobile:</strong> {{ data.mobile }}</p>
+    <p><strong>Address:</strong> {{ data.address }}</p>
+    
+    <p><strong>Education:</strong> {{ data.education }}</p>
+    <p><strong>Experience:</strong> {{ data.experience }}</p>
+    <p><strong>Skills:</strong> {{ data.skills }}</p>
+    
+
+    <button (click)="back.emit()" class="btn btn-secondary mt-4 backBtn">Back</button>
+    <button (click)="submit()" class="btn btn-primary mt-4 submitBtn">Submit</button>

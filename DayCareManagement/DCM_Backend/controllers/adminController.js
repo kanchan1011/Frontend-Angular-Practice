@@ -16,3 +16,15 @@ exports.getAllUsersWithChildren = async (req, res) => {
     res.status(500).json({ error: err.message });
   }
 };
+
+exports.getUsers = async (req, res) => {
+  try {
+    const users = await User.findAll({
+      include: [Child]
+    });
+    res.json(users);
+  } catch (error) {
+    res.status(500).json({ error: 'Server error' });
+  }
+};
+

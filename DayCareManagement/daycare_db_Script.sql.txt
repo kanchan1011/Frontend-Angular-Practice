@@ -1,0 +1,64 @@
+CREATE DATABASE daycare_db CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+USE daycare_db;
+
+
+
+-- Drop tables if they exist (for dev/testing)
+DROP TABLE IF EXISTS Attendance;
+DROP TABLE IF EXISTS Child;
+DROP TABLE IF EXISTS User;
+
+-- User table
+CREATE TABLE User (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    email VARCHAR(255) UNIQUE NOT NULL,
+    password VARCHAR(255) NOT NULL,
+    role ENUM('admin', 'parent') DEFAULT 'parent',
+    createdAt DATETIME DEFAULT CURRENT_TIMESTAMP,
+    updatedAt DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+);
+
+-- Child table
+CREATE TABLE Child (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    age INT,
+    profilePic VARCHAR(255), -- path to image file
+    UserId INT,
+    createdAt DATETIME DEFAULT CURRENT_TIMESTAMP,
+    updatedAt DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    FOREIGN KEY (UserId) REFERENCES User(id) ON DELETE CASCADE
+);
+
+-- Attendance table
+CREATE TABLE Attendance (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    date DATE NOT NULL,
+    status ENUM('Present', 'Absent') NOT NULL,
+    childId INT,
+    createdAt DATETIME DEFAULT CURRENT_TIMESTAMP,
+    updatedAt DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    FOREIGN KEY (childId) REFERENCES Child(id) ON DELETE CASCADE
+);
+
+
+--INSERT SAMPLE DATA
+
+-- Insert admin user
+INSERT INTO User (name, email, password, role) 
+VALUES ('Admin User', 'admin@daycare.com', 'hashed_password_here', 'admin');
+
+-- Insert parent user
+INSERT INTO User (name, email, password, role) 
+VALUES ('Parent User', 'parent@daycare.com', 'hashed_password_here', 'parent');
+
+-- Insert a child
+INSERT INTO Child (name, age, profilePic, UserId) 
+VALUES ('Johnny', 4, 'uploads/child-1718679084.jpg', 2);
+
+-- Insert attendance
+INSERT INTO Attendance (date, status, childId)
+VALUES ('2025-06-18', 'Present', 1);
+
+

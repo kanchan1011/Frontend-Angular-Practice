@@ -1,28 +1,18 @@
-// module.exports = (sequelize, DataTypes) => {
-//   const Attendance = sequelize.define('Attendance', {
-//     date: {
-//       type: DataTypes.DATEONLY,
-//       allowNull: false,
-//     },
-//     status: {
-//       type: DataTypes.STRING,
-//       allowNull: false,
-//       validate: { isIn: [['Present', 'Absent']] },
-//     },
-//   });
-
-//   return Attendance;
-// };
-
-
 const { Model } = require('sequelize');
 
 module.exports = (sequelize, DataTypes) => {
-  class Attendance extends Model {}
+  class Attendance extends Model {
+    static associate(models) {
+      // e.g., Attendance.belongsTo(models.Child);
+    }
+  }
 
   Attendance.init(
     {
-      date: DataTypes.DATEONLY,
+      date: {
+        type: DataTypes.DATEONLY,
+        allowNull: false
+      },
       status: {
         type: DataTypes.ENUM('Present', 'Absent'),
         allowNull: false
@@ -30,7 +20,9 @@ module.exports = (sequelize, DataTypes) => {
     },
     {
       sequelize,
-      modelName: 'Attendance'
+      modelName: 'Attendance',
+      tableName: 'attendances',
+      timestamps: true
     }
   );
 

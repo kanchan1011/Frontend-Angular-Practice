@@ -1,0 +1,16 @@
+<h2>Children Management</h2>
+
+<form (submit)="save()" style="margin-bottom: 20px;">
+  <input [(ngModel)]="childForm.name" name="name" placeholder="Child Name" required />
+  <input [(ngModel)]="childForm.age" name="age" type="number" placeholder="Age" required />
+  <input [(ngModel)]="childForm.parentName" name="parentName" placeholder="Parent Name" required />
+  <button type="submit">{{ childForm.id ? 'Update' : 'Add' }} Child</button>
+</form>
+
+<ul>
+  <li *ngFor="let child of children">
+    {{ child.name }} ({{ child.age }} years old) — Parent: {{ child.parentName }}
+    <button (click)="edit(child)">Edit</button>
+    <button (click)="delete(child.id)">Delete</button>
+  </li>
+</ul>

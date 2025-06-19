@@ -1,0 +1,25 @@
+<h2>Attendance</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Child</th>
+      <th>Date</th>
+      <th>Status</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let record of attendance">
+      <td>{{ record.childName }}</td>
+      <td>{{ record.date | date }}</td>
+      <td>{{ record.status }}</td>
+    </tr>
+  </tbody>
+</table>
+
+<!-- Optional manual marking UI -->
+<div style="margin-top: 20px;">
+  <label>Child ID:</label>
+  <input [(ngModel)]="childId" type="number" placeholder="Enter Child ID" />
+  <button (click)="markPresent(childId)">Mark Present</button>
+</div>

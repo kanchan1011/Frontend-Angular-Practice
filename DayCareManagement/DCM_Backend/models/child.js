@@ -1,29 +1,35 @@
-// // models/child.js
-// module.exports = (sequelize, DataTypes) => {
-//   const Child = sequelize.define('Child', {
-//     name: DataTypes.STRING,
-//     age: DataTypes.INTEGER,
-//     profilePic: DataTypes.STRING, // Optional image path
-//   });
-
-//   return Child;
-// };
-
-
 const { Model } = require('sequelize');
 
 module.exports = (sequelize, DataTypes) => {
-  class Child extends Model {}
+  class Child extends Model {
+    static associate(models) {
+      // e.g., Child.belongsTo(models.User);
+    }
+  }
 
   Child.init(
     {
-      name: DataTypes.STRING,
-      age: DataTypes.INTEGER,
-      profilePic: DataTypes.STRING
+      name: {
+        type: DataTypes.STRING,
+        allowNull: false
+      },
+      age: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        validate: {
+          min: 0
+        }
+      },
+      profilePic: {
+        type: DataTypes.STRING,
+        allowNull: true
+      }
     },
     {
       sequelize,
-      modelName: 'Child'
+      modelName: 'Child',
+      tableName: 'children',
+      timestamps: true
     }
   );
 

@@ -1,0 +1,28 @@
+<h2>Payments</h2>
+
+<form (submit)="submit()" style="margin-bottom: 20px;">
+  <label>Child ID:</label>
+  <input [(ngModel)]="payment.childId" name="childId" type="number" placeholder="Child ID" required />
+
+  <label>Amount:</label>
+  <input [(ngModel)]="payment.amount" name="amount" type="number" placeholder="Amount" required />
+
+  <button type="submit">Add Payment</button>
+</form>
+
+<table>
+  <thead>
+    <tr>
+      <th>Child</th>
+      <th>Amount</th>
+      <th>Date</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let pay of payments">
+      <td>{{ pay.childName }}</td>
+      <td>{{ pay.amount | currency }}</td>
+      <td>{{ pay.date | date }}</td>
+    </tr>
+  </tbody>
+</table>

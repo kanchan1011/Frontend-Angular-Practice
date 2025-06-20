@@ -1,8 +1,26 @@
- <h3>Login</h3>
- <form (ngSubmit)="submit()">
-  Email: 
-      <input [(ngModel)]="email" name="email" placeholder="Email" required />
-      Pasword: 
-      <input [(ngModel)]="password" name="password" type="password" required />
-      <button type="submit">Login</button>
-    </form>
+<h3>Login</h3>
+<form (ngSubmit)="submit()">
+  
+  <mat-form-field class="example-full-width">
+    <mat-label>Email</mat-label>
+    <input
+      matInput type="email"
+      placeholder="Email"
+      [(ngModel)]="email"
+      required
+      name="email"
+    />
+  </mat-form-field>
+  <mat-form-field class="example-full-width">
+    <mat-label>Password</mat-label>
+    <input
+      matInput type="password"
+      placeholder="Password"
+      [(ngModel)]="password"
+      required
+      name="password"
+    />
+  </mat-form-field>
+<button type="submit" matButton="elevated">Login</button>
+
+</form>

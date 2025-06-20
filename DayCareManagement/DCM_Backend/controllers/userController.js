@@ -18,47 +18,47 @@ exports.register = async (req, res) => {
   }
 };
 
-exports.login = async (req, res) => {
-  let { email, password } = req.body;
+// exports.login = async (req, res) => {
+//   let { email, password } = req.body;
   
-  if (!email || !password) {
-    return res.status(400).json({ msg: "Email and password required" });
-  }
+//   if (!email || !password) {
+//     return res.status(400).json({ msg: "Email and password required" });
+//   }
 
-  email = email.trim();
-  password = password.trim();
+//   email = email.trim();
+//   password = password.trim();
 
-  try {
-    const user = await User.findOne({ where: { email } });
-    if (!user) {
-      console.log("❌ User not found:", email);
-      return res.status(404).json({ msg: "User not found" });
-    }
+//   try {
+//     const user = await User.findOne({ where: { email } });
+//     if (!user) {
+//       console.log("❌ User not found:", email);
+//       return res.status(404).json({ msg: "User not found" });
+//     }
 
-    console.log("Login attempt:", { email, password, hash: user.password });
+//     console.log("Login attempt:", { email, password, hash: user.password });
 
-    const validPass = await bcrypt.compare(password, user.password);
-    console.log("🔍 Compare result:", validPass);
+//     const validPass = await bcrypt.compare(password, user.password);
+//     console.log("🔍 Compare result:", validPass);
 
-    if (!validPass) {
-      return res.status(400).json({ msg: "Invalid credentials" });
-    }
+//     if (!validPass) {
+//       return res.status(400).json({ msg: "Invalid credentials" });
+//     }
 
-    const token = jwt.sign(
-      { id: user.id, role: user.role },
-      process.env.JWT_SECRET,
-      { expiresIn: "1h" }
-    );
+//     const token = jwt.sign(
+//       { id: user.id, role: user.role },
+//       process.env.JWT_SECRET,
+//       { expiresIn: "1h" }
+//     );
 
-    return res.status(200).json({ token });
-  } catch (err) {
-    console.error("🔥 Login exception:", err);
-    return res.status(500).json({ error: "Server error" });
-  }
-};
+//     return res.status(200).json({ token });
+//   } catch (err) {
+//     console.error("🔥 Login exception:", err);
+//     return res.status(500).json({ error: "Server error" });
+//   }
+// };
 
 
-/*
+
 exports.login = async (req, res) => {
   const { email, password } = req.body;
   try {
@@ -67,7 +67,7 @@ exports.login = async (req, res) => {
     if (!user) return res.status(404).json({ msg: "User not found" });
 
     console.log("Stored hashed password:", user.password, "REq: ", req.body);
-    const validPass = await bcrypt.compare(password, user.password);
+    const validPass =  bcrypt.compare(password, user.password); //removed await keyword
     console.log("Login password:", password);
     console.log("Stored hashed password:", user.password);
     console.log("Password valid?", validPass);
@@ -85,8 +85,9 @@ exports.login = async (req, res) => {
     res.status(500).json({ error: err.message });
   }
 };
-*/
+
 // exports.getUsers = async (req, res) => {
 //   const users = await User.findAll();
 //   res.json(users);
 // };
+

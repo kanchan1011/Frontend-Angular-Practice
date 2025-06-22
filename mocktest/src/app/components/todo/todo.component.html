@@ -1,0 +1,25 @@
+<div class="row">
+  <div class="col-md-8">
+    <h3>Angular ToDo List</h3>
+    <input type="text" placeholder="Enter Todo" [(ngModel)]="newTodo" />
+    <button class="btn btn-primary" (click)="addTodo()">Create</button>
+  </div>
+</div>
+
+<ul>
+  <li *ngFor="let todo of todos">
+    <div *ngIf="!todo.isEditing">
+      {{ todo.text }}
+
+      <button class="btn btn-success" (click)="editTodo(todo)">Edit</button>
+      <button class="btn btn-danger" (click)="deleteTodo(todo.id)">Delete</button>
+    </div>
+
+    <div *ngIf="todo.isEditing">
+        <input [(ngModel)]="todo.text">
+        <button class="btn btn-success" (click)="updateTodo(todo,todo.text)">Update</button>
+      <button class="btn btn-secondary" (click)="cancelEdit(todo)">Cancel</button>
+ 
+    </div>
+  </li>
+</ul>

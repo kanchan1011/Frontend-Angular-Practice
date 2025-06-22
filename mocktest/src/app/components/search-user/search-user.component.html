@@ -1,0 +1,21 @@
+<div class="row">
+  <div class="col-md-8">
+    <h4>User Search</h4>
+    <label for="searchUser"> Search User By Name: </label>
+    <input
+      type="text" 
+      name="searchUser"
+      [(ngModel)]="searchUser"
+      placeholder="Search By USer"
+    />
+    
+    <ul> 
+      
+      @for (user of filterUsers; track user.id) {
+      <li> <strong>{{user.name}}</strong>
+        {{user.email}}
+        </li>
+      }
+    </ul>
+  </div>
+</div>

@@ -5,6 +5,7 @@ import { PersonalDetailsComponent } from './components/personal-details/personal
 import { SearchComponent } from './components/search/search.component';
 import { SearchUserComponent } from './components/search-user/search-user.component';
 import { TodoComponent } from './components/todo/todo.component';
+import { SurveyFormComponent } from './components/survey-form/survey-form.component';
 
 export const routes: Routes = [
   { path: 'home', component: HomeComponent, title: 'Home Page' },
@@ -22,4 +23,5 @@ export const routes: Routes = [
     title: 'Search User Page',
   },
   { path: 'todo', component: TodoComponent, title: 'ToDo List Page' },
+  { path: 'survey', component: SurveyFormComponent, title: 'Survey Form Page' },
 ];

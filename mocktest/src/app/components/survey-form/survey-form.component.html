@@ -1,0 +1,30 @@
+<div class="row">
+  <div class="col-md-10">
+    <h3>Survey Form</h3>
+    <form [formGroup]="surveyForm" (ngSubmit)="onSubmit()">
+      <div formArrayName="questions">
+        <div
+          *ngFor="question; of: questions.controls; let i = index"
+          [formGroupName]="i"
+        >
+          <label>Question: {{ i + 1 }}
+          <input type="text" formControlName="questionText" placeholder="Enter Your Question">
+        </label>
+        <button class="btn btn-danger" (click)="removeQuestion(i)" type="button">Remove Question</button>
+    
+        <div formArrayName="answers">
+            <div *ngFor="let answer of answers(i).controls; let j=index">
+                <input type="text" [formControlName]="j" placeholder="Answer Option">
+ <button (click)="removeAnswer(i,j)" type="button"  class="btn btn-danger">Remove</button>
+            </div>
+            <button (click)="addAnswer(i)" type="button" class="btn btn-primary">Add Answer</button>
+        </div>
+        <hr>
+    </div>
+      </div>
+      <button (click)="addQuestion()" type="button" class="btn btn-primary">Add Question</button>
+   <br><br>
+   <button type="submit" class="btn btn-success">Submit Survey</button>
+    </form>
+  </div>
+</div>

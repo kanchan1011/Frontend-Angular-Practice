@@ -1,0 +1,27 @@
+<div>
+  <h3>Create Todo List</h3>
+  <div class="todo-list">
+    <input type="text" [(ngModel)]="newTodo" placeholder="Enter Task" (keyup.enter)="addTodo()" />
+    <!-- {{newTodo}} -->
+    <button class="btnAdd" (click)="addTodo()">Add Todo</button>
+
+
+    <div class="todo-item">
+        <h4>Todo Items: </h4>
+        <app-todo-item *ngFor="let item of todos" [todo]="item" (toggle)="toggleTodo($event)" (delete)="deleteTodo($event)" (edit)="editTodo(item.task,item.id)"></app-todo-item>
+    </div>
+    <!-- <ul>
+        @for (item of todos; track $index) {
+           @if(item){
+            <li>
+               <b> {{item.task}}</b> 
+                 <input type="checkbox" class="isCompleted" (change)="toggleTodo(item.id)" [checked]="item.completed">
+             <button class="btnEdit" (click)="editTodo(item.task,item.id)">Edit</button>
+            <button class="btnDelete" (click)="deleteTodo(item.id)">Delete</button>
+                </li>
+           
+        }
+        }
+    </ul> -->
+  </div>
+</div>

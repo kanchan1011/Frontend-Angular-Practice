@@ -1,9 +1,26 @@
 <div class="todo-item">
-    
-    <b>{{(todo.id)+1}}  {{todo.task}}</b> 
+  <!-- <b>{{(todo.id)+1}}  {{todo.task}}</b> 
                  <input type="checkbox" class="isCompleted" (change)="toggle.emit(todo.id)" [checked]="todo.completed">
              <button class="btnEdit" (click)="edit.emit(todo.id)">Edit</button>
             <button class="btnDelete" (click)="delete.emit(todo.id)">Delete</button>
-              
+               -->
 
+              
+ 
+
+  <ng-container *ngIf="!editing; else editMode">
+    <span (dblclick)="startEdit()">{{ todo.task }}</span>
+     <input
+    type="checkbox"
+    class="isCompleted"
+    (change)="toggle.emit(todo.id)"
+    [checked]="todo.completed"
+  />
+    <button class="btnDelete" (click)="delete.emit(todo.id)">Delete</button>
+  </ng-container>
+
+  <ng-template #editMode></ng-template>
+  <input [(ngModel)]="editTitle" (keyup.enter)="saveEdit()" />
+  <button class="btnEdit" (click)="saveEdit()">Save</button>
+  <button class="btnDelete" (click)="cancelEdit()">Cancel</button>
 </div>

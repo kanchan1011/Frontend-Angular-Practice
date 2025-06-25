@@ -42,4 +42,10 @@ export class TodoService {
     }
     console.log(this.todos);
   }
+  updateTodo(id: number, newTitle: string) {
+    const isTodo = this.todos.find((todo) => todo.id === id);
+    if (isTodo) {
+      isTodo.task = newTitle;
+    }
+  }
 }

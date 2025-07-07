@@ -4,7 +4,6 @@ import { DynamicFormComponent } from '../dynamic-form/dynamic-form.component';
 import { CountdownTimerComponent } from '../countdown-timer/countdown-timer.component';
 import { StarRatingComponent } from '../star-rating/star-rating.component';
 import { RouterModule } from '@angular/router';
-import { EducationComponent } from '../education/education.component';
 import { UserService } from '../../services/user.service';
 import { User } from '../../models/user.model';
 import { SortByNamePipe } from "../../pipes/sort-by-name.pipe";
@@ -17,7 +16,6 @@ import { SortByNamePipe } from "../../pipes/sort-by-name.pipe";
     CountdownTimerComponent,
     StarRatingComponent,
     RouterModule,
-    EducationComponent,
     SortByNamePipe
 ],
   templateUrl: './home.component.html',

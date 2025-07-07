@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { MultistepParentComponent } from './components/multistep-parent/multistep-parent.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet,MultistepParentComponent],
+  imports: [RouterOutlet,NavbarComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })

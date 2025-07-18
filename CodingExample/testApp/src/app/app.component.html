@@ -1,0 +1,32 @@
+<div>
+  <h3>Person List</h3>
+  <table>
+    <tr>
+      <th>Name</th>
+      <th>City</th>
+    </tr>
+    <tr *ngFor="let p of person">
+      <td>{{ p.name | capitlize }}</td>
+      <td>{{ p.city }}</td>
+    </tr>
+  </table>
+</div>
+
+<div>
+  <h3>Products</h3>
+  <table>
+    <tr>
+      <th>Title</th>
+      <th>Category</th>
+      <th>Price</th>
+    </tr>
+    <tr *ngFor="let product of productList.products">
+      <td>
+        {{ product.title }}
+      </td>
+      <td>{{ product.category }}</td>
+      <td>{{product.price}}</td>
+    </tr>
+  </table>
+</div>
+<router-outlet />
